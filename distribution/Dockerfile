@@ -1,13 +1,13 @@
-FROM jdk-8u191:20181213
+FROM adoptopenjdk/openjdk8:latest
 MAINTAINER yaoshuai <ys@tsingj.com>
 
-RUN mkdir /bin
-RUN mkdir /conf
-RUN mkdir /lib
+RUN mkdir -p /seata/bin
+RUN mkdir -p /seata/conf
+RUN mkdir -p /seata/lib
 
-ADD distribution/bin/*.sh /bin/
-ADD distribution/conf/* /conf/
-ADD distribution/lib/* /lib/
+ADD bin/*.sh /seata/bin/
+ADD conf/* /seata/conf/
+ADD lib/* /seata/lib/
 
-CMD ["/bin/seata-server.sh"]
+CMD ["/seata/bin/seata-server.sh"]
 EXPOSE 8091
